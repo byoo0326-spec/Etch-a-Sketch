@@ -1,3 +1,19 @@
+.flexcontainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.button_UI {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.resolutionSelect {
+    font-weight: bold;
+}
+
 .container {
     display: flex;
     justify-content: center;
