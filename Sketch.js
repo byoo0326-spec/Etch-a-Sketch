@@ -18,42 +18,26 @@ function createGrid(length) {
 }
 
 //lets call on that function with a width_height of 16
-let width_height = 164;
-let numOfDivs = width_height * width_height;
+let width_height = 32;
+let resolutionSelection = 32;
 createGrid(width_height);
-const squares = container.querySelectorAll(".columns div");
-const resolutionIndicator = container.querySelector("p");
-const resolutionButton = document.querySelector(".button_UI").querySelector(".resolutionSelect");
-resolutionButton.addEventListener("click", resolutionSelector)
-
-//lets set up the event listeners
-//we will make it so when the mouse enters a square, it is black, and when it comes off, it turns transparent
-squares.forEach((square) => {
-    square.addEventListener("mouseenter", () => {
-        square.setAttribute("style", "background-color : black");
-    });
-    square.addEventListener("mouseout", () => {
-        square.setAttribute("style", "background-color : transparent");
-    });
-});
+const buttonUI = document.querySelector(".button_UI");
+const resolutionButton = buttonUI.querySelector(".resolutionSelect");
+const resolutionIndicator = buttonUI.querySelector("p");
+resolutionButton.addEventListener("click", resolutionSelector);
 
 //instead of manually changing width_height in the code, we can make a function that listens for a button call
 //the function will then take user input to determine the screen's resolution
 //lets have this function choose a new width_height to call createGrid() with, then clear the board
 function resolutionSelector() {
-    let resolutionSelector = Number(prompt("Select your desired resolution:"));
-    alert(`Sketchboard resolution is now ${resolutionSelector} x ${resolutionSelector}!`);
-    resolutionIndicator.textContent = `${resolutionSelector} x ${resolutionSelector}`;
-    for (i = 0; i < numOfDivs; i++) {
-        container.removeChildAll("div");
-    }
-    createGrid(resolutionSelector);
+    resolutionSelection = Number(prompt("Select your desired resolution:"));
+    alert(`Sketchboard resolution is now ${resolutionSelection} x ${resolutionSelection}!`);
+    resolutionIndicator.textContent = `${resolutionSelection} x ${resolutionSelection}`;
+    container.replaceChildren();
+    createGrid(resolutionSelection);
 }
 
 
-// row.addEventListener("mouseout", () => {
-//                 row.setAttribute("style", "background-color : transparent");
-//             });
 
 
 
